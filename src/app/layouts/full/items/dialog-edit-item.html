@@ -1,0 +1,88 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+  <form [formGroup]="productForm">
+    <mat-form-field>
+      <mat-label>Producto</mat-label>
+      <input matInput
+             type="text"
+             formControlName="name" />
+      <mat-error *ngIf="nameField?.errors?.['required']">El nombre es requerido</mat-error>
+      <mat-error *ngIf="nameField?.errors?.['minlength']">El nombre debe tener al menos 4 caracteres</mat-error>
+      <mat-error *ngIf="nameField?.errors?.['maxlength']">El nombre no puede exceder 100 caracteres</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Cantidad</mat-label>
+      <input matInput
+             type="number"
+             formControlName="quantity"
+             class="example-right-align"
+             placeholder="0" />
+      <mat-error *ngIf="quantityField?.errors?.['required']">La cantidad es requerida</mat-error>
+      <mat-error *ngIf="quantityField?.errors?.['min']">La cantidad debe ser mayor a 0</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Precio total</mat-label>
+      <input matInput
+             type="number"
+             formControlName="price"
+             class="example-right-align"
+             placeholder="0" />
+      <span matTextPrefix>$&nbsp;</span>
+      <mat-error *ngIf="priceField?.errors?.['required']">El precio es requerido</mat-error>
+      <mat-error *ngIf="priceField?.errors?.['min']">El precio debe ser mayor a 0</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Categoria</mat-label>
+      <mat-select formControlName="category">
+        <mat-option *ngFor="let category of categories.content" [value]="category.id">
+          {{category.name}}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="categoryField?.errors?.['required']">La categoría es requerida</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="d-flex ml-auto">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button
+          [disabled]="!productForm.valid"
+          (click)="saveItem()"
+          cdkFocusInitial>
+    {{nameButton}}
+  </button>
+</mat-dialog-actions>
+
+<!-- Dialog save-->
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+
+  <mat-form-field>
+    <mat-label>Producto</mat-label>
+    <input  type="text" required maxlength="100" minlength="4"  matInput [(ngModel)]="item.name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Cantidad</mat-label>
+    <input matInput [(ngModel)]="item.quantity" required  type="number" class="example-right-align" placeholder="0" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Precio total</mat-label>
+    <input matInput type="number" [(ngModel)]="item.price " required class="example-right-align" placeholder="0" />
+    <span matTextPrefix>$&nbsp;</span>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Categoria</mat-label>
+    <mat-select [(value)]="idCategory" required>
+      <mat-option *ngFor="let category of categories.content" value = "{{category.id}}" >
+          {{category.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="d-flex ml-auto">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button [mat-dialog-close]="" (click)="saveItem()" cdkFocusInitial>{{nameButton}}</button>
+</mat-dialog-actions>

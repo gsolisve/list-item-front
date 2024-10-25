@@ -1,0 +1,34 @@
+<h2 mat-dialog-title>{{title}}</h2>
+<mat-dialog-content>
+  <form [formGroup]="categoryForm">
+    <mat-form-field>
+      <mat-label>Categoría</mat-label>
+      <input matInput
+             type="text"
+             formControlName="name" />
+      <mat-error *ngIf="nameField?.errors?.['required']">El nombre es requerido</mat-error>
+      <mat-error *ngIf="nameField?.errors?.['minlength']">El nombre debe tener al menos 4 caracteres</mat-error>
+      <mat-error *ngIf="nameField?.errors?.['maxlength']">El nombre no puede exceder 100 caracteres</mat-error>
+    </mat-form-field>
+    <mat-label>Color</mat-label>
+    <ngx-colors  ngx-colors-trigger formControlName="color"
+
+    ></ngx-colors>
+    <!--
+    <mat-form-field>
+      <input matInput [style.display]="'none'">
+      <mat-error *ngIf="colorField?.errors?.['required']">El color es requerido</mat-error>
+
+    </mat-form-field>
+  -->
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions class="d-flex ml-auto">
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+  <button mat-button
+          [disabled]="!categoryForm.valid"
+          (click)="acceptButton()">
+    {{nameButton}}
+  </button>
+</mat-dialog-actions>
