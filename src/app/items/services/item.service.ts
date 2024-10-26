@@ -3,13 +3,15 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from 'src/app/items/interfaces/item.interface';
 import { Page } from 'src/app/items/interfaces/page.interface';
+import { environment } from 'src/environments/environmen';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ItemService {
 
-  private apiUrl : string = 'http://localhost:9091/items';
+  private host : string = environment.apiUrl;
+  private apiUrl : string = `${this.host}/items`;
   constructor(private http: HttpClient) { }
 
   public getItem( idItem : number) : Observable<Item>{

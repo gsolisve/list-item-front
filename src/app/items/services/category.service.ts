@@ -3,13 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/items/interfaces/item.interface';
 import { Page } from 'src/app/items/interfaces/page.interface';
+import { environment } from 'src/environments/environmen';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CategoryService {
 
-  private apiUrl : string = 'http://localhost:9091/category';
+  private host : string = environment.apiUrl;
+  private apiUrl : string = `${this.host}/category`;
   constructor(private http: HttpClient) { }
 
   public getCategory( idItem : number) : Observable<Category>{
