@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '${process.env["BACKEND_URL"]}'
+  apiUrl: 'https://sv-articulos-production.up.railway.app'
 };
