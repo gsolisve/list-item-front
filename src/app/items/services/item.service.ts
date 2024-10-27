@@ -3,7 +3,7 @@ import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Item } from 'src/app/items/interfaces/item.interface';
 import { Page } from 'src/app/items/interfaces/page.interface';
-import { environment } from 'src/environments/environmen';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
