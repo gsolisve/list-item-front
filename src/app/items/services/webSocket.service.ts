@@ -7,7 +7,7 @@ import { map } from 'rxjs/operators';
 
 export const rxStompConfig: RxStompConfig = {
   // URL del WebSocket
-  brokerURL: 'ws://localhost:9091/ws',
+  brokerURL: 'https://sv-articulos-production.up.railway.app/ws',
 
   // Headers opcionales para la conexión
   /*connectHeaders: {
