@@ -19,7 +19,8 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DialogItem } from 'src/app/items/interfaces/dialogItem.interface';
-
+import { Subscription } from 'rxjs';
+import { WebSocketService } from 'src/app/items/services/webSocket.service';
 const initialSelection: Item[] = [];
 const allowMultiSelect = true;
 
@@ -45,13 +46,18 @@ export class ItemsComponent implements OnInit {
   public dataSource!: MatTableDataSource<Item>;
   public isLoad: boolean = false;
   private overlayRef?: OverlayRef;
+  private subscription?: Subscription;
+  mensajes: any[] = [];
   private _snackBar = inject(MatSnackBar);
-  constructor(private itemService: ItemService, private overlay: Overlay, private vcRef: ViewContainerRef) {
+  constructor(private itemService: ItemService, private overlay: Overlay, private vcRef: ViewContainerRef ,
+    private  wsService: WebSocketService
+  ) {
 
   }
 
 
   ngOnInit(): void {
+    this.subscribeToWs();
     this.getAllItems();
 
     this.overlayRef = this.overlay.create({
@@ -61,6 +67,28 @@ export class ItemsComponent implements OnInit {
         .centerHorizontally()
         .centerVertically()
     });
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  subscribeToWs(){
+    this.subscription = this.wsService.subscribe<Item>('/topic/items')
+    .subscribe(
+      mensaje => {
+        //console.log(mensaje);
+        this.itemService.setItemSubject(mensaje);
+        this.getAllItems();
+        //this.mensajes.push(mensaje);
+      },
+      error => {
+        console.error('Error en la suscripción:', error);
+      }
+    );
+
   }
 
   getAllItems() {

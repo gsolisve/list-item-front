@@ -1,6 +1,17 @@
 
 <!-- ============================================================== -->
 <!-- Profile - style you can find in header.scss -->
+<!--<mat-icon matBadge="{{countNotification}}" (click)="viewNotification()">notifications</mat-icon>-->
+<button mat-icon-button  [matMenuTriggerFor]="menu" #menuTrigger  >
+  <mat-icon [matBadge]="notificationsCount$ | async">notifications</mat-icon>
+</button>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item *ngFor="let item of listItemsNotifications; let i = index" (click)="openDialog(item , i)">Producto : {{item.name}}</button>
+</mat-menu>
+
+<!-- Include text description of the icon's meaning for screen-readers -->
+
 <button  mat-icon-button class="m-r-5 p-0 d-flex jc-c align-items-center"> <img src="assets/images/users/1.jpg" alt="user" class="profile-pic"> </button>
 
 <!-- ============================================================== -->

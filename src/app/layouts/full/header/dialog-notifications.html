@@ -1,0 +1,16 @@
+<div class="d-flex" style="flex-direction: column; margin: 0.75em;">
+  <h3  mat-dialog-title class="m-b-0" style="text-align: center;">Notificación</h3>
+  <mat-dialog-content style="text-align: center;">
+    <div>
+      <h5>Nombre: <span>{{item.name}}</span></h5>
+    </div>
+    <div>
+      <h5>Categoría: <span>{{item.category.name}}</span></h5>
+    </div>
+
+    <h5>Status: <span>{{item.status.name}}</span></h5>
+  </mat-dialog-content>
+  <mat-dialog-actions class="d-flex ml-auto">
+    <button mat-button (click)="onNoClick()">OK</button>
+  </mat-dialog-actions>
+</div>

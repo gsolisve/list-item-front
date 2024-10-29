@@ -36,7 +36,7 @@ import { OverlayContainer, FullscreenOverlayContainer } from '@angular/cdk/overl
     ReactiveFormsModule,
     RouterModule.forRoot(AppRoutes),
     AppSidebarComponent
-  ],
+],
   providers: [
     {
       provide: LocationStrategy,
