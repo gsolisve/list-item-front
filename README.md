@@ -1,27 +1,122 @@
-# MaterialProAngularLite
+# Front List Items
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.1.
+Aplicación web desarrollada en Angular 17, basada en la plantilla MaterialPRO https://www.wrappixel.com/templates/materialpro/ y utilizando Angular Material para la interfaz de usuario.
 
-## Development server
+## 🚀 Tecnologías Utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- Angular 17.3.x
+- Angular Material 17.3.7
+- Node.js 20.x
+- TypeScript 5.4.5
+- RxJS 7.8.1
+- Express 4.18.2
+- ApexCharts 3.49.0
+- STOMP para WebSockets
 
-## Code scaffolding
+## 📋 Prerrequisitos
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Node.js 20.x
+- NPM 10.x
+- Angular CLI 17.3.6
 
-## Build
+## ⚙️ Instalación
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. **Clonar el repositorio**
+   ```bash
+   git clone [url-del-repositorio]
+   cd front-list-items
+   ```
 
-## Running unit tests
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+3. **Iniciar el servidor de desarrollo**
+   ```bash
+   ng serve
+   ```
 
-## Running end-to-end tests
+   La aplicación estará disponible en `http://localhost:4200/`
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## 🏗️ Construcción
 
-## Further help
+Para construir el proyecto para producción:
+```bash
+npm run build
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+El resultado de la construcción se encontrará en el directorio `dist/`.
+
+## 🎨 Diseño y Estilos
+
+### MaterialPRO Template
+Este proyecto está basado en la plantilla MaterialPRO, que proporciona:
+- Diseño moderno y profesional
+- Componentes prediseñados
+- Layouts responsivos
+- Temas personalizables
+- Dashboard y páginas comunes preconfiguradas
+
+### Angular Material
+Se utiliza Angular Material como biblioteca principal de componentes UI, ofreciendo:
+- Componentes Material Design
+- Temas personalizables
+- Componentes interactivos
+- Diseño responsivo
+- Accesibilidad incorporada
+
+## 📊 Características Principales
+
+- Integración con WebSockets usando STOMP
+- Gráficos interactivos con ApexCharts
+- Selector de colores con ngx-colors
+- Soporte para gestos táctiles con HammerJS
+- Diseño responsivo
+- Optimización para producción
+
+## 🌐 Despliegue
+
+La aplicación está configurada para desplegarse en plataformas que soporten Node.js. Incluye un servidor Express básico para servir la aplicación en producción.
+
+```bash
+# Iniciar en producción
+npm start
+```
+
+## 📁 Estructura del Proyecto
+
+```
+front-list-items/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   ├── services/
+│   │   ├── models/
+│   │   └── shared/
+│   ├── assets/
+│   └── environments/
+├── package.json
+└── angular.json
+```
+
+
+
+## 📦 Scripts Disponibles
+
+- `npm start`: Inicia el servidor de producción
+- `npm run build`: Construye el proyecto para producción
+- `npm test`: Ejecuta los tests unitarios
+- `npm run watch`: Construye el proyecto en modo watch
+- `ng serve`: Inicia el servidor de desarrollo
+
+## 🔧 Configuración del Entorno
+
+La aplicación requiere las siguientes versiones de Node.js y npm:
+```json
+"engines": {
+  "node": "20.x",
+  "npm": "10.x"
+}
+```
+
